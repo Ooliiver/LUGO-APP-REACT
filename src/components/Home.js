@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import signOut from "../functions/cerrarSesion";
-import { Container, Stack, Button, Form, Table } from "react-bootstrap";
+import { Container, Stack, Form, Table } from "react-bootstrap";
+import { Button } from "primereact/button/button.cjs";
 import getAllProducts from "../functions/getAllProducts";
 import eliminarProductoHome from "../functions/eliminarProductoHome";
 import filtrarDatos from "../functions/filtrarDatos";
@@ -68,37 +69,26 @@ export function Home({ usuario }) {
 
   <div className="card" >
     <h5>Sección de productos</h5>
-      <Form onSubmit={busquedaFormHandler}>
-          <Form.Group controlId="busqueda" >
-          <span className="p-float-label" >
-                        <Form.Control type="search" />
-                        <label htmlFor="inputtext"  >Buscar</label>
-            
-          </span>
-          <Button
-            onClick={() => {
-              const input = document.getElementById("busqueda");
-              input.value = "";
-              actualizarEstadoProductos();}}>
-            Recargar tabla</Button>
-          </Form.Group>
-    
-      </Form>
-      </div>
+    <div className="col-12 md:col-6">
+      <div className="p-inputgroup">
+          <Button label="Search"onClick={
+              actualizarEstadoProductos()}/>
+            <InputText placeholder="Keyword" />
+           </div>
+     </div>
+  </div>
       <tbody>
       
       <div className="grid">
-            
-                
-                    <div className="flex justify-content-between mb-3">
-                        <div className="card">
+        <div className="flex justify-content-between mb-3">
+          <div className="card">
          
           
               <tr>
                 
               <DataTable value={productos}  >
         
-              <Column field="index" header="#"/>
+            
               <Column field="titulo" header="Nombre"/>
               <Column field="precio" header="Precio"/>
               <Column field="cantidad" header="Cantidad"/>
@@ -110,12 +100,12 @@ export function Home({ usuario }) {
          </div>
         
           <div className="card">
-            <div className="card">Acciones</div>
+            <div className="card2">Acciones</div>
           {productos &&
             productos.map((producto, index) => (
               <tr>
                 <td>
-                  <Button className="card"
+                  <Button className="card2"
                     variant="dark"
                     onClick={() => {
                       setProductoEditar({ ...producto });
@@ -124,7 +114,7 @@ export function Home({ usuario }) {
                   >
                     Editar
                   </Button>ㅤ
-                  <Button className="card" 
+                  <Button className="card2" 
                     variant="danger"
                     onClick={() => {
                       eliminarProductoHome(producto, usuario).then(
@@ -150,7 +140,7 @@ export function Home({ usuario }) {
   
 
       
-      <Button onClick={añadirProductoHome}> Añadir Producto</Button>
+      <Button className="card2" onClick={añadirProductoHome}> Añadir Producto</Button>
     </Container>
   );
 }

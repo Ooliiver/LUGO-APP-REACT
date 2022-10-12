@@ -293,7 +293,7 @@ const App = () => {
         'layout-mobile-sidebar-active': mobileMenuActive,
         'p-input-filled': inputStyle === 'filled',
         'p-ripple-disabled': ripple === false,
-        'layout-theme-light': layoutColorMode === 'light'
+        'layout-theme-light': layoutColorMode === 'light' 
     });
 
     return (

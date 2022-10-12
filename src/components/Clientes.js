@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import signOut from "../functions/cerrarSesion";
-import { Container, Stack, Button, Form, Table } from "react-bootstrap";
+import { Container, Stack, Form, Table } from "react-bootstrap";
+import { Button } from "primereact/button/button.cjs";
 import getAllClientes from "../functions/getAllClientes";
 import eliminarClienteHome from "../functions/eliminarClienteHome";
 import filtrarDatos from "../functions/filtrarDatos";
@@ -67,31 +68,21 @@ export function Clientes({ usuario }) {
         />
       )}
 
-  <div className="card" >
-    <h5>Sección de clientes</h5>
-      <Form onSubmit={busquedaFormHandler}>
-          <Form.Group controlId="busqueda" >
-          <span className="p-float-label" >
-                        <Form.Control type="search" />
-                        <label htmlFor="inputtext"  >Buscar por numero de id</label>
-            
-          </span>
-          <Button
-            onClick={() => {
-              const input = document.getElementById("busqueda");
-              input.value = "";
-              actualizarEstadoClientes();}}>
-            Recargar tabla</Button>
-          </Form.Group>
-    
-      </Form>
-      </div>
+<div className="card" >
+    <h5>Sección de productos</h5>
+    <div className="col-12 md:col-6">
+      <div className="p-inputgroup">
+          <Button label="Search"onClick={
+              actualizarEstadoClientes()}/>
+            <InputText placeholder="Keyword" />
+           </div>
+     </div>
+  </div>
       <tbody>
       
       <div className="grid">
-            
-                
-                    <div className="flex justify-content-between mb-3">
+                   
+             <div className="flex justify-content-between mb-3">
                         <div className="card">
          
           
@@ -104,7 +95,7 @@ export function Clientes({ usuario }) {
               <Column field="telefono" header="Teléfono"/>
               <Column field="correo" header="Correo"/>
               <Column field="direccion" header="Dirección"/>
-              <Column field="id_cli" header="Número de identificación"/>
+              <Column field="id_cli" header="Identificación"/>
               
                 </DataTable>
               </tr>
@@ -112,12 +103,12 @@ export function Clientes({ usuario }) {
          </div>
         
           <div className="card">
-            <div className="card">Acciones</div>
+            <div className="card2">Acciones</div>
           {clientes &&
             clientes.map((cliente, index) => (
               <tr>
                 <td>
-                  <Button className="card"
+                  <Button className="card2"
                     variant="dark"
                     onClick={() => {
                       setClienteEditar({ ...cliente});
@@ -126,7 +117,7 @@ export function Clientes({ usuario }) {
                   >
                     Editar
                   </Button>ㅤ
-                  <Button className="card" 
+                  <Button className="card2" 
                     variant="danger"
                     onClick={() => {
                       eliminarClienteHome(cliente, usuario).then(

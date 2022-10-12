@@ -110,12 +110,6 @@ export const AppMenu = (props) => {
         <div className="layout-menu-container">
             <AppSubmenu items={props.model} className="layout-menu"  onMenuItemClick={props.onMenuItemClick} root={true} role="menu" />
             
-            
-            
         </div>
     );
 }
-/*<a href="https://multimedia.paginasamarillas.es/adsContentSrv/13704564-1-A1pSNDcSbz/7a455aa1-4f2f-40f5-9077-f375d248ae06/frutas-lugo-logo1.png" className="block mt-3">
-                <img alt="Fruteria Lugo" className="w-full"
-                     src={props.layoutColorMode === 'light' ? 'assets/layout/images/logo-fruteria.jpg' : 'assets/layout/images/.'}/>
-            </a>*/

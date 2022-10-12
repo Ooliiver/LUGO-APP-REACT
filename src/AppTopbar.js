@@ -1,17 +1,14 @@
 import React  from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-import signOut from "./functions/cerrarSesion";
 import classNames from 'classnames';
 
 export const AppTopbar = (props) => {
 
     return (
-        <div className="layout-topbar" >
-            
-                <img src={props.layoutColorMode === 'light' ? 'assets/layout/images/logo-fruteria.png' : 'assets/layout/images/logo-fruteria.png'} alt="logo" height= "80" />
+        <div className="layout-topbar">
             <Link to="/" className="layout-topbar-logo">
-                <span >LUGO APP</span>
+                <img src={props.layoutColorMode === 'light' ? 'assets/layout/images/logo-fruteria.png' : 'assets/layout/images/logo-fruteria.png'} alt="logo"/>
+                <span>LUGO APP</span>
             </Link>
 
             <button type="button" className="p-link  layout-menu-button layout-topbar-button" onClick={props.onToggleMenuClick}>
@@ -36,7 +33,7 @@ export const AppTopbar = (props) => {
                         </button>
                     </li>
                     <li>
-                        <button className="p-link layout-topbar-button" onClick={signOut}> Cerrar sesión
+                        <button className="p-link layout-topbar-button" onClick={props.onMobileSubTopbarMenuClick}>
                             <i className="pi pi-user"/>
                             <span>Profile</span>
                         </button>

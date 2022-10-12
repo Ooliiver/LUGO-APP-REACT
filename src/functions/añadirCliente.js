@@ -2,7 +2,7 @@ import firebaseApp from "../firebase/credenciales";
 import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
 import escribirLog from "./escribirLog";
 
-function añadirCliente(infoCliente, autor) {
+export function añadirCliente(infoCliente, autor) {
   
   const db = getFirestore(firebaseApp);
   const collectionRef = collection(db, "clientes");

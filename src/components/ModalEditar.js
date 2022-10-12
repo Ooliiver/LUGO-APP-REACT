@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useState } from "react";
 import { Modal, Stack, Form, Button } from "react-bootstrap";
 
 import editarProducto from "../functions/editarProducto";
@@ -12,6 +12,42 @@ function ModalEditar({
   setProductoEditar,
   usuario,
 }) {
+
+  const [nombres, setNombres] = useState("")
+  const handleNombres = ({ target: { value } }) => {
+    if (/^[a-záéíóú. ]*$/.test(value.toLowerCase())) {
+      if (/^([a-záéíóú][a-záéíóú]*(.|. |$))*$/.test(value.toLowerCase()))
+        setNombres({ valor: value, error: ""});
+    } else
+        setNombres({
+          ...nombres,
+          error: "SOLO ALFABETICOS"
+        })
+      }
+  
+      const [precios, setPrecios] = useState("")
+      const handlePrecios = ({ target: { value } }) => {
+        if (/^[0-9. ]*$/.test(value.toLowerCase())) {
+          if (/^([0-9][0-9]*(.|. |$))*$/.test(value.toLowerCase()))
+            setPrecios({ valor: value, error: ""});
+        } else
+            setPrecios({
+              ...precios,
+              error: "SOLO ALFABETICOS"
+            })
+          }
+          const [cantidades, setCantidades] = useState("")
+          const handleCantidades = ({ target: { value } }) => {
+            if (/^[0-9. ]*$/.test(value.toLowerCase())) {
+              if (/^([0-9][0-9]*(.|. |$))*$/.test(value.toLowerCase()))
+                setCantidades({ valor: value, error: ""});
+            } else
+                setCantidades({
+                  ...cantidades,
+                  error: "SOLO ALFABETICOS"
+                })
+              }
+
   function editarProductoModal() {
     //obtener infor del formulario
     const titulo = document.getElementById("titulo").value;
@@ -32,15 +68,15 @@ function ModalEditar({
   });
 
   return (
-    <div className="layout-sidebar"
+    <div className="layout-sidebar2"
       show={isModalEditar}
       onHide={() => {
         setIsModalEditar(false);
         setProductoEditar(null);
       }}
     >
-      <div className="card">
-      <div>
+      
+      <div className="card2">
         <th>Editar producto</th>
       </div>
       <div>
@@ -51,7 +87,7 @@ function ModalEditar({
               id="titulo"
               placeholder="Nombre del producto"
               type="text"
-              className="card"
+              className="card3"
               value={productoEstado?.titulo}
               onChange={(e) =>
                 setProductoEstado({
@@ -64,7 +100,7 @@ function ModalEditar({
               id="precio"
               placeholder="Precio"
               type="number"
-              className="card"
+              className="card3"
               value={productoEstado?.precio}
               onChange={(e) =>
                 setProductoEstado({
@@ -77,7 +113,7 @@ function ModalEditar({
               id="cantidad"
               placeholder="Cantidad"
               type="number"
-              className="card"
+              className="card3"
               value={productoEstado?.cantidad}
               onChange={(e) =>
                 setProductoEstado({
@@ -90,7 +126,7 @@ function ModalEditar({
               id="sku"
               placeholder="SKU"
               type="text"
-              className="card"
+              className="card3"
               value={productoEstado?.sku}
               onChange={(e) =>
                 setProductoEstado({
@@ -116,7 +152,7 @@ function ModalEditar({
           Editar
         </Button>
       </div>
-    </div>
+  
   );
 }
 

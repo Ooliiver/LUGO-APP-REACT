@@ -33,7 +33,7 @@ function ModalEditarCliente({
   });
 
   return (
-    <div className="layout-sidebar" 
+    <div className="layout-sidebar2" 
      
       show={isModalEditarCliente}
       onHide={() => {
@@ -41,8 +41,8 @@ function ModalEditarCliente({
         setClienteEditar(null);
       }}
     >
-      <div className="card">
-      <div>
+      <div className="card2">
+      <div className="card2">
         <th>Editar cliente</th>
       </div>
       <div>
@@ -52,7 +52,7 @@ function ModalEditarCliente({
               id="id_nom"
               placeholder="Nombre"
               type="text"
-              className="card"
+              className="card3"
               value={clienteEstado?.id_nom}
               onChange={(e) =>
                 setClienteEstado({
@@ -65,7 +65,7 @@ function ModalEditarCliente({
               id="telefono"
               placeholder="Telefono"
               type="number"
-              className="card"
+              className="card3"
               value={clienteEstado?.telefono}
               onChange={(e) =>
                 setClienteEstado({
@@ -78,7 +78,7 @@ function ModalEditarCliente({
               id="correo"
               placeholder="Correo"
               type="text"
-              className="card"
+              className="card3"
               value={clienteEstado?.correo}
               onChange={(e) =>
                 setClienteEstado({
@@ -91,7 +91,7 @@ function ModalEditarCliente({
               id="direccion"
               placeholder="Direccion"
               type="text"
-              className="card"
+              className="card3"
               value={clienteEstado?.direccion}
               onChange={(e) =>
                 setClienteEstado({
@@ -104,7 +104,7 @@ function ModalEditarCliente({
               id="id_cli"
               placeholder="Numero de identificacion"
               type="text"
-              className="card"
+              className="card3"
               value={clienteEstado?.id_cli}
               onChange={(e) =>
                 setClienteEstado({

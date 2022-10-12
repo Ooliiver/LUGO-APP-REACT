@@ -99,8 +99,8 @@ export const AppConfig = (props) => {
     },[])
 
     useEffect(() => {
-        let themeElement = document.getElementById('vela-green');
-        const themeHref = 'assets/themes/vela-green/theme.css';
+        let themeElement = document.getElementById('theme-link');
+        const themeHref = 'assets/themes/' + theme + '/theme.css';
         replaceLink(themeElement, themeHref);
 
     },[theme,replaceLink])
@@ -122,7 +122,7 @@ export const AppConfig = (props) => {
             <Button className="p-button-danger layout-config-close p-button-rounded p-button-text" icon="pi pi-times" onClick={hideConfigurator}/>
 
             <div className="layout-config-content">
-                <h5 className="mt-0">Component Scale</h5>
+                <h5 className="mt-0">Escala</h5>
                 <div className="config-scale">
                     <Button icon="pi pi-minus" onClick={decrementScale} className="p-button-text" disabled={scale === scales[0]} />
                     {
@@ -132,8 +132,54 @@ export const AppConfig = (props) => {
                     }
                     <Button icon="pi pi-plus" onClick={incrementScale} className="p-button-text" disabled={scale === scales[scales.length - 1]} />
                 </div>
+                <h5>Barra lateral</h5>
+                <div className="p-formgroup-inline">
+                    <div className="field-radiobutton">
+                        <RadioButton inputId="static" name="layoutMode" value="static" onChange={(e) => props.onLayoutModeChange(e.value)} checked={props.layoutMode === 'static'} />
+                        <label htmlFor="static">Siempre en pantalla</label>
+                    </div>
+                    <div className="field-radiobutton">
+                        <RadioButton inputId="overlay" name="layoutMode" value="overlay" onChange={(e) => props.onLayoutModeChange(e.value)} checked={props.layoutMode === 'overlay'} />
+                        <label htmlFor="overlay">Ocultar</label>
+                    </div>
+                </div>
+                <h5>Temas</h5>
+                <h6>Tema principal</h6>
+                <div className="grid free-themes">
+                    <div className="col-3 text-center">
+                        <button className="p-link" onClick={(e) => changeTheme(e, 'lara-light-indigo', 'light')}>
+                            <img src="favicon.ico" alt="Fruteria Lugo" />
+                        </button>
+                    </div>
+            
+                </div>
 
-               
+                <h6>Otros temas para ti</h6>
+                <div className="grid free-themes">
+                
+        
+                    <div className="col-3 text-center">
+                        <button className="p-link" onClick={e => changeTheme(e, 'vela-orange', 'dim')}>
+                            <img src="assets/layout/images/themes/vela-orange.png" alt="Vela Orange"/>
+                        </button>
+                    </div>
+                    <div className="col-3 text-center">
+                        <button className="p-link" onClick={e => changeTheme(e, 'vela-purple', 'dim')}>
+                            <img src="assets/layout/images/themes/vela-purple.png" alt="Vela Purple"/>
+                        </button>
+                    </div>
+                    <div className="col-3 text-center">
+                        <button className="p-link" onClick={e => changeTheme(e, 'arya-orange', 'dark')}>
+                            <img src="assets/layout/images/themes/arya-orange.png" alt="Arya Orange"/>
+                        </button>
+                    </div>
+                    <div className="col-3 text-center">
+                        <button className="p-link" onClick={e => changeTheme(e, 'arya-purple', 'dark')}>
+                            <img src="assets/layout/images/themes/arya-purple.png" alt="Arya Purple"/>
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import firebaseApp from "../firebase/credenciales";
+import firebaseApp from "../firebase/credenciales.js";
 import { getAuth, signOut } from "firebase/auth";
 const auth = getAuth(firebaseApp);
 
